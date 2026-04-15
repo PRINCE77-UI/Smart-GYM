@@ -29,6 +29,9 @@ const userSchema = new mongoose.Schema({
 });
 const User = mongoose.model('User', userSchema);
 
+app.get('/', (req, res) => {
+  res.send('Backend is running 🚀');
+});
 // Step 4: Register
 app.post('/register', async (req, res) => {
   try {
