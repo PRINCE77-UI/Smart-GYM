@@ -10,9 +10,10 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 app.use(cors({
-  origin: "https://smart-gym-front.vercel.app/",
+  origin: "https://smart-gym-front.vercel.app",
   credentials: true
 }));
+
 
 // Step 2: Connect MongoDB
 mongoose.connect(process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/roleAuth')
