@@ -17,7 +17,7 @@ function Register() {
       return;
     }
 
-    const res = await axios.post("http://localhost:5000/register", {
+    const res = await axios.post(`${process.env.REACT_APP_API_URL}/register`, {
       name,
       email,
       password,
@@ -51,7 +51,7 @@ function Register() {
 
         <button onClick={handleRegister}>Register</button>
         <button className="back-btn" onClick={() => navigate("/")}>
-         Back to Login
+          Back to Login
         </button>
         <p className="error-msg">{message}</p>
       </div>

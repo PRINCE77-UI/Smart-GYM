@@ -18,7 +18,7 @@ function Trainers() {
   }, []);
 
   const fetchTrainers = async () => {
-    const res = await axios.get("http://localhost:5000/trainers");
+    const res = await axios.get(`${process.env.REACT_APP_API_URL}/trainers`);
     setTrainers(res.data);
   };
 
@@ -31,13 +31,13 @@ function Trainers() {
     if (editIndex !== null) {
       const trainer = trainers[editIndex];
 
-      await axios.put(`http://localhost:5000/trainers/${trainer._id}`, {
+      await axios.put(`${process.env.REACT_APP_API_URL}/trainers/${trainers._id}`, {
         name,
         specialization,
         status
       });
     } else {
-      await axios.post("http://localhost:5000/trainers", {
+      await axios.post(`${process.env.REACT_APP_API_URL}/trainers`, {
         name,
         specialization,
         status
@@ -68,7 +68,7 @@ function Trainers() {
   const deleteTrainer = async (index) => {
     const trainer = trainers[index];
 
-    await axios.delete(`http://localhost:5000/trainers/${trainer._id}`);
+    await axios.delete(`${process.env.REACT_APP_API_URL}/trainers/${trainer._id}`);
 
     fetchTrainers();
   };

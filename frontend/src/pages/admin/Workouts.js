@@ -21,7 +21,7 @@ function Workouts() {
   }, []);
 
   const fetchWorkouts = async () => {
-    const res = await axios.get("http://localhost:5000/workouts");
+    const res = await axios.get(`${process.env.REACT_APP_API_URL}/workouts`);
     setWorkouts(res.data);
   };
 
@@ -38,9 +38,9 @@ function Workouts() {
     if (editIndex !== null) {
       const workout = workouts[editIndex];
 
-      await axios.put(`http://localhost:5000/workouts/${workout._id}`, formData);
+      await axios.put(`${process.env.REACT_APP_API_URL}/workouts/${workout._id}`, formData);
     } else {
-      await axios.post("http://localhost:5000/workouts", formData);
+      await axios.post(`${process.env.REACT_APP_API_URL}/workouts`, formData);
     }
 
     fetchWorkouts();
@@ -67,7 +67,7 @@ function Workouts() {
   const handleDelete = async (index) => {
     const workout = workouts[index];
 
-    await axios.delete(`http://localhost:5000/workouts/${workout._id}`);
+    await axios.delete(`${process.env.REACT_APP_API_URL}/workouts/${workout._id}`);
     fetchWorkouts();
   };
 

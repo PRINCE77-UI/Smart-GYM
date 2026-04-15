@@ -17,7 +17,7 @@ function Members() {
   }, []);
 
   const fetchMembers = async () => {
-    const res = await axios.get("http://localhost:5000/members");
+    const res = await axios.get(`${process.env.REACT_APP_API_URL}/members`);
     setMembers(res.data);
   };
 
@@ -30,13 +30,13 @@ function Members() {
     if (editIndex !== null) {
       const member = members[editIndex];
 
-      await axios.put(`http://localhost:5000/members/${member._id}`, {
+      await axios.put(`${process.env.REACT_APP_API_URL}/members/${member._id}`, {
         name,
         plan,
         status
-      });
+      }); 
     } else {
-      await axios.post("http://localhost:5000/members", {
+      await axios.post(`${process.env.REACT_APP_API_URL}/members`, {
         name,
         plan,
         status
@@ -66,7 +66,7 @@ function Members() {
   const deleteMember = async (index) => {
     const member = members[index];
 
-    await axios.delete(`http://localhost:5000/members/${member._id}`);
+    await axios.delete(`${process.env.REACT_APP_API_URL}/members/${member._id}`);
 
     fetchMembers();
   };

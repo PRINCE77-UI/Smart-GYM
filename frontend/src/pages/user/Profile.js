@@ -15,7 +15,7 @@ function Profile() {
       try {
         const token = localStorage.getItem("token");
 
-        const res = await axios.get("http://localhost:5000/user", {
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/user`, {
           headers: {
             Authorization: token,
           },
@@ -44,7 +44,7 @@ function Profile() {
     try {
       const token = localStorage.getItem("token");
 
-      const res = await axios.put("http://localhost:5000/user", formData, {
+      const res = await axios.put(`${process.env.REACT_APP_API_URL}/user`, formData, {
         headers: {
           Authorization: token,
         },
