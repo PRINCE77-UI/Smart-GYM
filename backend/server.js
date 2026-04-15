@@ -10,7 +10,8 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 app.use(cors({
-  origin: '*'
+  origin: "https://smart-gym-front.vercel.app/",
+  credentials: true
 }));
 
 // Step 2: Connect MongoDB
