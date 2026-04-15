@@ -29,7 +29,6 @@ function Trainers() {
     }
 
     if (editIndex !== null) {
-      const trainer = trainers[editIndex];
 
       await axios.put(`${process.env.REACT_APP_API_URL}/trainers/${trainers._id}`, {
         name,
